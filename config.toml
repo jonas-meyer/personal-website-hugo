@@ -47,6 +47,11 @@ disqusShortname = "yourdiscussshortname"
   weight = 1
   url = "https://github.com/jonas-meyer/"
 [[params.social]]
+  name = "Gitlab"
+  icon = "fa fa-gitlab fa-2x"
+  weight = 3
+  url = "https://gitlab.com/jonas-meyer/"
+[[params.social]]
   name = "Linkedin"
   icon = "fa fa-linkedin fa-2x"
   weight = 2
@@ -56,6 +61,7 @@ disqusShortname = "yourdiscussshortname"
   icon = "fa fa-envelope fa-2x"
   weight = 3
   url = "mailto:jonasmeyerohle@gmail.com"
+
 
 # Menu links
 #[[menu.main]]
