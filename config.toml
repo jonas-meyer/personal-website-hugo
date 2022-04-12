@@ -17,7 +17,7 @@ disqusShortname = "yourdiscussshortname"
   info = "Electrical engineering student interested in data science, building data pipelines and visualization tools."
   description = "Jonas Meyer-Ohle's personal website"
   keywords = "blog,developer,personal"
-  avatarurl = "images/avatar.png"
+  avatarurl = "images/avatar.avif"
   #gravatar = "john.doe@example.com"
 
   #favicon_32 = "/img/favicon-32x32.png"
