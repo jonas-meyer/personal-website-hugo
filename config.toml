@@ -14,7 +14,7 @@ disqusShortname = "yourdiscussshortname"
 
 [params]
   author = "Jonas Meyer-Ohle"
-  info = "Electrical engineering student interested in data science, building data pipelines and visualization tools."
+  info = "Software engineer interested in data science, building data pipelines and visualization tools."
   description = "Jonas Meyer-Ohle's personal website"
   keywords = "blog,developer,personal"
   avatarurl = "images/avatar.avif"
