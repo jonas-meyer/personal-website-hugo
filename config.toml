@@ -55,7 +55,7 @@ disqusShortname = "yourdiscussshortname"
   name = "Gmail"
   icon = "fa fa-envelope fa-2x"
   weight = 4
-  url = "mailto:jonasmeyerohle@gmail.com"
+  url = "mailto:me@jonasmeyerohle.dev"
 
 
 # Menu links
