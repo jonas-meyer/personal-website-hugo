@@ -1,0 +1,26 @@
+{
+  "comments": {
+    "dependencies": {
+      "simple-icons": "github.com/schnerring/hugo-mod-json-resume"
+    },
+    "devDependencies": {
+      "husky": "github.com/schnerring/hugo-mod-json-resume",
+      "lint-staged": "github.com/schnerring/hugo-mod-json-resume",
+      "markdownlint-cli": "github.com/schnerring/hugo-mod-json-resume",
+      "prettier": "github.com/schnerring/hugo-mod-json-resume",
+      "prettier-plugin-go-template": "github.com/schnerring/hugo-mod-json-resume"
+    }
+  },
+  "dependencies": {
+    "simple-icons": "^8.6.0"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "markdownlint-cli": "^0.33.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-go-template": "^0.0.13"
+  },
+  "name": "personal-website-hugo",
+  "version": "0.1.0"
+}

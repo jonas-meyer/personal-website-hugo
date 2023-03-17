@@ -12,6 +12,7 @@ pygmentscodefencesguesssyntax = true
 
 disqusShortname = "yourdiscussshortname"
 
+
 [params]
   author = "Jonas Meyer-Ohle"
   info = "Software engineer interested in data science, building data pipelines and visualization tools."
@@ -19,6 +20,7 @@ disqusShortname = "yourdiscussshortname"
   keywords = "blog,developer,personal"
   avatarurl = "images/avatar.avif"
   #gravatar = "john.doe@example.com"
+  customCSS = ["/css/json-resume.css"]
 
   #favicon_32 = "/img/favicon-32x32.png"
   #favicon_16 = "/img/favicon-16x16.png"
@@ -56,6 +58,19 @@ disqusShortname = "yourdiscussshortname"
   icon = "fa fa-envelope fa-2x"
   weight = 4
   url = "mailto:me@jonasmeyerohle.dev"
+[[params.social]]
+  name = "Resume"
+  icon = "fa fa-file-text fa-2x"
+  weight = 5
+  url = "resume/"
+
+[module]
+[[module.imports]]
+path = "github.com/schnerring/hugo-mod-json-resume"
+[[module.mounts]]
+source = "node_modules/simple-icons/icons"
+target = "assets/simple-icons"
+
 
 
 # Menu links
