@@ -40,7 +40,6 @@
         "Streamlined ETL processes using Cloudformation and Terraform templates for AWS stack deployment",
         "Developed HTTP and REST APIs for versatile internal and external company use cases",
         "Optimized company warehouse operations via Docker containerization for pricing and grading tools",
-        "Improved system observability by implementing Athena and SQL-based principles",
         "Crafted insightful dashboards using Amazon Quicksight, integrating data sources like Loki, Cloudwatch, and Athena",
         "Ensured seamless testing and deployment through CI/CD tools, specifically Github Actions"
       ],
