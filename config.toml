@@ -15,7 +15,7 @@ disqusShortname = "yourdiscussshortname"
 
 [params]
   author = "Jonas Meyer-Ohle"
-  info = "Software engineer interested in data science, building data pipelines and visualization tools."
+  info = "Quantitative developer interested in data science, building data pipelines and visualization tools."
   description = "Jonas Meyer-Ohle's personal website"
   keywords = "blog,developer,personal"
   avatarurl = "images/avatar.avif"
@@ -58,11 +58,6 @@ disqusShortname = "yourdiscussshortname"
   icon = "fa fa-envelope fa-2x"
   weight = 4
   url = "mailto:me@jonasmeyerohle.dev"
-[[params.social]]
-  name = "Resume"
-  icon = "fa fa-file-text fa-2x"
-  weight = 5
-  url = "resume/"
 
 [module]
 [[module.imports]]
