@@ -4,8 +4,6 @@ theme = "hugo-coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
-paginate = 20
-
 pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
@@ -14,50 +12,50 @@ disqusShortname = "yourdiscussshortname"
 
 
 [params]
-  author = "Jonas Meyer-Ohle"
-  info = "Quantitative developer interested in data science, building data pipelines and visualization tools."
-  description = "Jonas Meyer-Ohle's personal website"
-  keywords = "blog,developer,personal"
-  avatarurl = "images/avatar.avif"
-  #gravatar = "john.doe@example.com"
-  customCSS = ["/css/json-resume.css"]
+author = "Jonas Meyer-Ohle"
+info = "Quantitative developer interested in data science, building data pipelines and visualization tools."
+description = "Jonas Meyer-Ohle's personal website"
+keywords = "blog,developer,personal"
+avatarurl = "images/avatar.avif"
+#gravatar = "john.doe@example.com"
+customCSS = ["/css/json-resume.css"]
 
-  #favicon_32 = "/img/favicon-32x32.png"
-  #favicon_16 = "/img/favicon-16x16.png"
+#favicon_32 = "/img/favicon-32x32.png"
+#favicon_16 = "/img/favicon-16x16.png"
 
-  since = 2022
+since = 2022
 
-  enableTwemoji = true
+enableTwemoji = true
 
-  colorScheme = "auto"
-  hidecolorschemetoggle = false
+colorScheme = "auto"
+hidecolorschemetoggle = false
 
-  #customCSS = ["css/custom.css"]
-  #customSCSS = ["scss/custom.scss"]
-  #customJS = ["js/custom.js"]
+#customCSS = ["css/custom.css"]
+#customSCSS = ["scss/custom.scss"]
+#customJS = ["js/custom.js"]
 
 [taxonomies]
-  category = "categories"
-  series = "series"
-  tag = "tags"
-  author = "authors"
+category = "categories"
+series = "series"
+tag = "tags"
+author = "authors"
 
 # Social links
 [[params.social]]
-  name = "Github"
-  icon = "fa fa-github fa-2x"
-  weight = 1
-  url = "https://github.com/jonas-meyer/"
+name = "Github"
+icon = "fa fa-github fa-2x"
+weight = 1
+url = "https://github.com/jonas-meyer/"
 [[params.social]]
-  name = "Linkedin"
-  icon = "fa fa-linkedin fa-2x"
-  weight = 3
-  url = "https://linkedin.com/in/jonasmeyer-ohle/"
+name = "Linkedin"
+icon = "fa fa-linkedin fa-2x"
+weight = 3
+url = "https://linkedin.com/in/jonasmeyer-ohle/"
 [[params.social]]
-  name = "Gmail"
-  icon = "fa fa-envelope fa-2x"
-  weight = 4
-  url = "mailto:me@jonasmeyerohle.dev"
+name = "Gmail"
+icon = "fa fa-envelope fa-2x"
+weight = 4
+url = "mailto:me@jonasmeyerohle.dev"
 
 [module]
 [[module.imports]]
@@ -65,7 +63,6 @@ path = "github.com/schnerring/hugo-mod-json-resume"
 [[module.mounts]]
 source = "node_modules/simple-icons/icons"
 target = "assets/simple-icons"
-
 
 
 # Menu links
