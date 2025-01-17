@@ -1,1 +1,224 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title/><link>https://jonasmeyerohle.dev/</link><description>Recent content on</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://jonasmeyerohle.dev/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://jonasmeyerohle.dev/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jonasmeyerohle.dev/resume/</guid><description>Experience Model Risk Data Scientist / Engineer 2022-11-21 - present NatWest Group London, England, United Kingdom Working Student Software Engineer 2022-04-30 - 2022-10-31 reverse.supply Berlin, Germany Enhanced technology scalability through close collaboration with founding partners and CTO Transitioned to serverless architecture by implementing AWS Lambda functions for front-end and back-end segregation Streamlined ETL processes using Cloudformation and Terraform templates for AWS stack deployment Developed HTTP and REST APIs for versatile internal and external company use cases Optimized company warehouse operations via Docker containerization for pricing and grading tools Crafted insightful dashboards using Amazon Quicksight, integrating data sources like Loki, Cloudwatch, and Athena Ensured seamless testing and deployment through CI/CD tools, specifically Github Actions Working Student Data Scientist 2019-04-30 - 2022-03-31 Charité – Universitätsmedizin Berlin Berlin, Germany Contributed to multiple research projects focused on gait analysis in Parkinson&amp;#39;s patients Enhanced existing codebase for accelerated data processing stages Developed batch processing pipelines in Python and MATLAB for seamless analysis of recorded measurements Designed sensor-fusion based algorithms in Python to segment gait phases and detect abnormalities Provided tutoring and documentation for new scientists to utilize research group&amp;#39;s post-measurement pipelines Actively participated in measurements to prevent potential data issues Software Engineer Internship 2017-08-31 - 2017-10-31 Kozo Keikaku Engineering, Inc.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title/><link>https://jonasmeyerohle.dev/</link><description>Recent content on</description><generator>Hugo</generator><language>en</language><atom:link href="https://jonasmeyerohle.dev/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://jonasmeyerohle.dev/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jonasmeyerohle.dev/resume/</guid><description>&lt;h2 id="experience">
+ Experience
+ &lt;a class="heading-link" href="#experience">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+
+
+
+ &lt;section class="jr__list jr-work__list">
+ 
+ &lt;div class="jr__item jr-work__item">
+ &lt;div class="jr__item-meta">
+ &lt;div class="jr-work__position">Model Risk Data Scientist / Engineer&lt;/div>
+ &lt;div class="jr__date-range">
+ &lt;span>2022-11-21&lt;/span>
+ &lt;span>-&lt;/span>
+ &lt;span>present&lt;/span>
+&lt;/div>
+
+ 
+ &lt;div class="jr-work__name">
+ 
+ 
+ &lt;a href="https://www.linkedin.com/company/68360623">
+ NatWest Group
+ &lt;/a>
+ 
+ 
+ 
+ &lt;/div>
+ 
+
+ 
+ &lt;div class="jr-work__location">London, England, United Kingdom&lt;/div>
+ 
+ &lt;/div>
+
+ &lt;div class="jr__item-content">
+ 
+ 
+ &lt;/div>
+ &lt;/div>
+ 
+ &lt;div class="jr__item jr-work__item">
+ &lt;div class="jr__item-meta">
+ &lt;div class="jr-work__position">Working Student Software Engineer&lt;/div>
+ &lt;div class="jr__date-range">
+ &lt;span>2022-04-30&lt;/span>
+ &lt;span>-&lt;/span>
+ &lt;span>2022-10-31&lt;/span>
+&lt;/div>
+
+ 
+ &lt;div class="jr-work__name">
+ 
+ 
+ &lt;a href="https://www.linkedin.com/company/70516109">
+ reverse.supply
+ &lt;/a>
+ 
+ 
+ 
+ &lt;/div>
+ 
+
+ 
+ &lt;div class="jr-work__location">Berlin, Germany&lt;/div>
+ 
+ &lt;/div>
+
+ &lt;div class="jr__item-content">
+ 
+ 
+ &lt;ul class="jr-work__highlights">
+ 
+ &lt;li>Enhanced technology scalability through close collaboration with founding partners and CTO&lt;/li>
+ 
+ &lt;li>Transitioned to serverless architecture by implementing AWS Lambda functions for front-end and back-end segregation&lt;/li>
+ 
+ &lt;li>Streamlined ETL processes using Cloudformation and Terraform templates for AWS stack deployment&lt;/li>
+ 
+ &lt;li>Developed HTTP and REST APIs for versatile internal and external company use cases&lt;/li>
+ 
+ &lt;li>Optimized company warehouse operations via Docker containerization for pricing and grading tools&lt;/li>
+ 
+ &lt;li>Crafted insightful dashboards using Amazon Quicksight, integrating data sources like Loki, Cloudwatch, and Athena&lt;/li>
+ 
+ &lt;li>Ensured seamless testing and deployment through CI/CD tools, specifically Github Actions&lt;/li>
+ 
+ &lt;/ul>
+ 
+ &lt;/div>
+ &lt;/div>
+ 
+ &lt;div class="jr__item jr-work__item">
+ &lt;div class="jr__item-meta">
+ &lt;div class="jr-work__position">Working Student Data Scientist&lt;/div>
+ &lt;div class="jr__date-range">
+ &lt;span>2019-04-30&lt;/span>
+ &lt;span>-&lt;/span>
+ &lt;span>2022-03-31&lt;/span>
+&lt;/div>
+
+ 
+ &lt;div class="jr-work__name">
+ 
+ 
+ &lt;a href="https://www.linkedin.com/company/41080714">
+ Charité – Universitätsmedizin Berlin
+ &lt;/a>
+ 
+ 
+ 
+ &lt;/div>
+ 
+
+ 
+ &lt;div class="jr-work__location">Berlin, Germany&lt;/div>
+ 
+ &lt;/div>
+
+ &lt;div class="jr__item-content">
+ 
+ 
+ &lt;ul class="jr-work__highlights">
+ 
+ &lt;li>Contributed to multiple research projects focused on gait analysis in Parkinson&amp;#39;s patients&lt;/li>
+ 
+ &lt;li>Enhanced existing codebase for accelerated data processing stages&lt;/li>
+ 
+ &lt;li>Developed batch processing pipelines in Python and MATLAB for seamless analysis of recorded measurements&lt;/li>
+ 
+ &lt;li>Designed sensor-fusion based algorithms in Python to segment gait phases and detect abnormalities&lt;/li>
+ 
+ &lt;li>Provided tutoring and documentation for new scientists to utilize research group&amp;#39;s post-measurement pipelines&lt;/li>
+ 
+ &lt;li>Actively participated in measurements to prevent potential data issues&lt;/li>
+ 
+ &lt;/ul>
+ 
+ &lt;/div>
+ &lt;/div>
+ 
+ &lt;div class="jr__item jr-work__item">
+ &lt;div class="jr__item-meta">
+ &lt;div class="jr-work__position">Software Engineer Internship&lt;/div>
+ &lt;div class="jr__date-range">
+ &lt;span>2017-08-31&lt;/span>
+ &lt;span>-&lt;/span>
+ &lt;span>2017-10-31&lt;/span>
+&lt;/div>
+
+ 
+ &lt;div class="jr-work__name">
+ 
+ 
+ &lt;a href="https://www.linkedin.com/company/1574776">
+ Kozo Keikaku Engineering, Inc.
+ &lt;/a>
+ 
+ 
+ 
+ &lt;/div>
+ 
+
+ 
+ &lt;div class="jr-work__location">Tokyo, Japan&lt;/div>
+ 
+ &lt;/div>
+
+ &lt;div class="jr__item-content">
+ 
+ 
+ &lt;ul class="jr-work__highlights">
+ 
+ &lt;li>Automated antenna design modeling in Finite Element Analysis Software (FEAS)&lt;/li>
+ 
+ &lt;li>Streamlined electric-field data transfers between FEAS and visualization tools&lt;/li>
+ 
+ &lt;li>Executed extensive field simulations, including company bridge designs&lt;/li>
+ 
+ &lt;/ul>
+ 
+ &lt;/div>
+ &lt;/div>
+ 
+ &lt;/section>
+
+
+
+&lt;h2 id="education">
+ Education
+ &lt;a class="heading-link" href="#education">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+
+
+
+ &lt;section class="jr__list jr-education__list">
+ 
+ &lt;div class="jr__item jr-education__item">
+ &lt;div class="jr__item-meta">
+ &lt;div class="jr-education__area">Electrical and Electronics Engineering (Bachelor of Science - BS)&lt;/div>
+ &lt;div class="jr__date-range">
+ &lt;span>2015-01-31&lt;/span>
+ &lt;span>-&lt;/span>
+ &lt;span>2022-10-31&lt;/span>
+&lt;/div>
+
+ 
+ &lt;div class="jr-education__institution">
+ 
+ &lt;span>Technische Universität Berlin&lt;/span>
+ 
+ &lt;/div>
+ 
+ &lt;/div>
+ &lt;p class="jr-education__score">
+ 
+ &lt;/p></description></item></channel></rss>
