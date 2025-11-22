@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article
+  box-="double round"
+  shear-="top"
+  style="--box-border-color: var(--foreground0)"
+>
+  <div
+    class="header"
+    style="flex-direction: column; align-items: flex-start; gap: 0.25rem"
+  >
+    <span>{{ .Title }}</span>
+  </div>
+  <div class="article-content">{{ .Content }}</div>
+</article>
+{{ end }}

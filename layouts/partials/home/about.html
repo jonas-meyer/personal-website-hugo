@@ -1,0 +1,56 @@
+<div box-="round" shear-="top" style="--box-border-color: var(--foreground2)">
+  <div class="header" style="align-items: center">
+    <span>about</span>
+  </div>
+  <div class="profile-hero" style="padding: 1rem">
+    <div class="profile-avatar">
+      <div class="profile-avatar-inner">
+        <picture>
+          <source srcset="/images/avatar.avif" type="image/avif" />
+          <img
+            src="/images/avatar.png"
+            alt="Portrait of {{ .Site.Title }}"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+    <div class="profile-body">
+      <h1 style="margin: 0 0 0.5rem 0">
+        {{ replace .Site.Title "-" "&#8209;" | safeHTML }}
+      </h1>
+      {{ $tagline := or .Site.Params.tagline "Full-stack engineer building
+      pragmatic products across the stack." }} {{ $bio := or .Site.Params.bio "I
+      enjoy shipping fast, typed services and responsive frontends, usually with
+      Go, TypeScript, and a sprinkle of Rust when it makes sense." }}
+      <p class="profile-tagline">{{ $tagline }}</p>
+      {{ if ne $bio $tagline }}
+      <p class="profile-bio">{{ $bio }}</p>
+      {{ end }} {{ $social := .Site.Params.social }} {{ if or $social.linkedin
+      $social.github $social.email }}
+      <ul class="profile-links" marker-="bullet">
+        {{ with $social.linkedin }}
+        <li>
+          <a href="{{ . }}" target="_blank" rel="noreferrer">
+            <button variant-="foreground0" size-="small">LinkedIn</button>
+          </a>
+        </li>
+        {{ end }} {{ with $social.github }}
+        <li>
+          <a href="{{ . }}" target="_blank" rel="noreferrer">
+            <button variant-="foreground1" size-="small">GitHub</button>
+          </a>
+        </li>
+        {{ end }} {{ with $social.email }}
+        <li>
+          <a href="mailto:{{ . }}">
+            <button variant-="background1" size-="small">Email</button>
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div box-="round" shear-="top" style="--box-border-color: var(--foreground2)">
+  <div class="header" style="align-items: center; gap: 0.5rem">
+    <span>{{ .Title }}</span>
+    <span is-="badge" variant-="info">{{ len .Data.Terms }}</span>
+  </div>
+  <div class="article-content">
+    {{ if .Data.Terms }}
+    <ul>
+      {{ range .Data.Terms.Alphabetical }}
+      <li
+        style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap"
+      >
+        <a href="{{ .Page.RelPermalink }}">{{ .LinkTitle }}</a>
+        <span is-="badge" variant-="blue">{{ .Count }}</span>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p>No terms found.</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

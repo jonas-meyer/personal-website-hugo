@@ -1,0 +1,97 @@
+<header>
+  <div box-="round" shear-="top" style="--box-border-color: var(--foreground2)">
+    <div class="header">
+      <span>navbar</span>
+    </div>
+    <div class="nav-inner" style="padding: 0.5rem 1ch">
+      <a href="/" class="brand">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          width="24"
+          height="24"
+          style="vertical-align: middle; margin-right: 0.5ch"
+        >
+          <!-- Background rectangle -->
+          <rect
+            x="1"
+            y="1"
+            width="30"
+            height="30"
+            rx="4"
+            style="
+              fill: var(--surface0, transparent);
+              stroke: var(--blue, currentColor);
+              stroke-width: 2;
+            "
+          />
+
+          <!-- Greater than symbol (>) -->
+          <path
+            d="M9 11 L15 16 L9 21"
+            style="
+              stroke: var(--blue, currentColor);
+              stroke-width: 2;
+              fill: none;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            "
+          />
+
+          <!-- Dash symbol (-) -->
+          <line
+            x1="19"
+            y1="16"
+            x2="25"
+            y2="16"
+            style="
+              stroke: var(--mauve, var(--blue, currentColor));
+              stroke-width: 2;
+              stroke-linecap: round;
+            "
+          />
+        </svg>
+        {{ .Site.Title }}
+      </a>
+
+      <div class="nav-actions">
+        <button id="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          ☰
+        </button>
+
+        <label for="theme-switch">
+          <input
+            id="theme-switch"
+            type="checkbox"
+            is-="switch"
+            aria-label="Toggle theme"
+          />
+        </label>
+
+        <nav id="nav-links" role="navigation" aria-label="Main navigation">
+          {{ range .Site.Menus.main }} {{ $isActive := false }} {{ if eq .Name
+          "Home" }} {{ $isActive = $.IsHome }}
+          <a
+            href="{{ .URL }}"
+            class="nav-button{{ if $isActive }} active{{ end }}"
+            ><button variant-="blue">{{ .Name }}</button></a
+          >
+          {{ else if eq .Name "Blog" }} {{ $isActive = eq $.Section "blog" }}
+          <a
+            href="{{ .URL }}"
+            class="nav-button{{ if $isActive }} active{{ end }}"
+            ><button variant-="green">{{ .Name }}</button></a
+          >
+          {{ else }} {{ $isActive = or (eq $.RelPermalink .URL) (eq
+          $.CurrentSection.RelPermalink .URL) }}
+          <a
+            href="{{ .URL }}"
+            class="nav-button{{ if $isActive }} active{{ end }}"
+            ><button variant-="lavender">{{ .Name }}</button></a
+          >
+          {{ end }} {{ end }}
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

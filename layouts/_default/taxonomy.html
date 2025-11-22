@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div box-="round" shear-="top" style="--box-border-color: var(--foreground2)">
+  <div class="header" style="align-items: center; gap: 0.5rem; flex-wrap: wrap">
+    <span>{{ .Title }}</span>
+    <span is-="badge" variant-="info">{{ .Data.Singular }}</span>
+    <span is-="badge" variant-="blue">{{ len .Pages }}</span>
+  </div>
+  <div class="article-content">
+    {{ if .Pages }}
+    <ul>
+      {{ range .Pages.ByDate.Reverse }}
+      <li
+        style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap"
+      >
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span is-="badge" variant-="yellow"
+          >{{ .Date.Format "2006-01-02" }}</span
+        >
+        {{ with .Section }}
+        <span is-="badge" variant-="green">{{ . }}</span>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p>No content found for this taxonomy.</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

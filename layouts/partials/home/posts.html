@@ -1,0 +1,45 @@
+{{ $pages := where .Site.Pages "Section" "blog" }} {{ $pages = where $pages
+"Kind" "page" }} {{ $pages = $pages.ByDate.Reverse }} {{ if gt (len $pages) 0 }}
+<div
+  class="home-card posts-card"
+  box-="round"
+  shear-="top"
+  style="
+    --box-border-color: var(--foreground2);
+    --box-border-width: 2px;
+    --box-double-border-width: 2px;
+    background-color: var(--background0);
+  "
+>
+  <div class="header" style="align-items: center">
+    <span>blog</span>
+  </div>
+  <div class="posts-grid">
+    {{ range $pages }}
+    <div class="post-card-wrapper">
+      <a
+        href="{{ .Permalink }}"
+        class="post-card-overlay"
+        aria-label="Read full post: {{ .Title }}"
+      ></a>
+      <div
+        box-="round"
+        shear-="top"
+        style="--box-border-color: var(--foreground2)"
+        class="post-card"
+      >
+        <div class="header">
+          <span>{{ .Date.Format "2006-01-02" }}</span>
+        </div>
+        <div class="card-body">
+          <h3 style="color: var(--maroon); margin: 0 0 0.5rem 0">
+            {{ .Title }}
+          </h3>
+          <article>{{ .Content | truncate 250 }}</article>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="profile-section">
+  <div class="home-grid">
+    <article
+      class="home-card about-card"
+      shear-="top"
+      style="
+        --box-border-color: var(--foreground0);
+        --box-border-width: 2px;
+        --box-double-border-width: 2px;
+        background-color: var(--background0);
+      "
+    >
+      {{ partial "home/about.html" . }} {{ partial "home/timeline.html" . }}
+    </article>
+
+    {{ partial "home/posts.html" . }}
+  </div>
+</section>
+{{ end }}

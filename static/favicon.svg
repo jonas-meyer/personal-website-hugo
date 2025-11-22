@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Site favicon">
+  <style>
+    .bg {
+      fill: #f8fafc;
+      stroke: #0f172a;
+      stroke-width: 2;
+    }
+    .gt {
+      fill: none;
+      stroke: #0f172a;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .dash {
+      stroke: #0f172a;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bg {
+        fill: #0f172a;
+        stroke: #e2e8f0;
+      }
+      .gt {
+        stroke: #e2e8f0;
+      }
+      .dash {
+        stroke: #e2e8f0;
+      }
+    }
+  </style>
+  <rect class="bg" x="1" y="1" width="30" height="30" rx="4" />
+  <path class="gt" d="M9 11 L15 16 L9 21" />
+  <line class="dash" x1="19" y1="16" x2="25" y2="16" />
+</svg>

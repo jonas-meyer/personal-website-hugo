@@ -1,0 +1,35 @@
+{{ $timeline := .Site.Params.timeline }} {{ if $timeline }}
+<div
+  class="timeline"
+  box-="round"
+  shear-="top"
+  style="--box-border-color: var(--foreground2)"
+>
+  <div class="header" style="align-items: center">
+    <span>timeline</span>
+  </div>
+  <div class="timeline-body">
+    <ul class="timeline-tree">
+      {{ range $timeline }}
+      <li>
+        <div class="timeline-item">
+          <div class="timeline-head">
+            <span class="timeline-role">{{ .role }}</span>
+            <span is-="badge" variant-="foreground1">{{ .period }}</span>
+          </div>
+          <div class="timeline-meta">
+            <span class="timeline-company">{{ .company }}</span>
+            {{ with .location }}<span is-="badge" variant-="background1"
+              >{{ . }}</span
+            >{{ end }}
+          </div>
+          {{ with .summary }}
+          <div class="timeline-summary">{{ . }}</div>
+          {{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}
