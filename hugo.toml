@@ -180,3 +180,7 @@ url = "mailto:me@jonasmeyerohle.dev"
 # name = "Contact me"
 # weight = 5
 # url = "contact/"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
