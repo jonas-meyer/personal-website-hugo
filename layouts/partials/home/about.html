@@ -20,10 +20,8 @@
       <h1 style="margin: 0 0 0.5rem 0">
         {{ replace .Site.Title "-" "&#8209;" | safeHTML }}
       </h1>
-      {{ $tagline := or .Site.Params.tagline "Full-stack engineer building
-      pragmatic products across the stack." }} {{ $bio := or .Site.Params.bio "I
-      enjoy shipping fast, typed services and responsive frontends, usually with
-      Go, TypeScript, and a sprinkle of Rust when it makes sense." }}
+      {{ $tagline := or .Site.Params.tagline "Full-stack engineer building pragmatic products across the stack." }}
+      {{ $bio := or .Site.Params.bio "I enjoy shipping fast, typed services and responsive frontends, usually with Go, TypeScript, and a sprinkle of Rust when it makes sense." }}
       <p class="profile-tagline">{{ $tagline }}</p>
       {{ if ne $bio $tagline }}
       <p class="profile-bio">{{ $bio }}</p>
