@@ -114,7 +114,7 @@ h1 {
 
 .profile-hero {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) 1fr;
+  grid-template-columns: minmax(140px, 280px) 1fr;
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
 }
@@ -176,7 +176,7 @@ h1 {
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .home-grid {
     grid-template-columns: 1fr;
   }
@@ -193,12 +193,6 @@ h1 {
 }
 
 /* ===== TIMELINE ===== */
-
-.timeline .header span:first-child {
-  font-size: 1rem;
-  color: var(--text);
-  font-weight: normal;
-}
 
 .timeline-body {
   padding: 1rem;
@@ -324,6 +318,15 @@ h1 {
   font-weight: bold;
   text-decoration: none;
   color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #nav-toggle {
@@ -354,17 +357,7 @@ h1 {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}
-
-#nav-links,
-.nav-actions {
   flex-wrap: wrap;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   margin-left: auto;
 }
 
@@ -387,6 +380,13 @@ h1 {
   .brand {
     order: 1;
     /* Put brand on the left */
+    flex: 1;
+    min-width: 0; /* Allow shrinking */
+    margin-right: 0.5rem;
+  }
+
+  .theme-switch-label {
+    order: 2;
   }
 
   #nav-links {
@@ -407,11 +407,6 @@ h1 {
   .nav-inner {
     flex-wrap: wrap;
     align-items: center;
-  }
-
-  .nav-actions {
-    width: 100%;
-    justify-content: flex-end;
   }
 
   #nav-links a {
