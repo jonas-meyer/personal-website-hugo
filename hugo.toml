@@ -4,6 +4,12 @@ defaultContentLanguage = "en"
 enableEmoji = true
 title = "Jonas Meyer-Ohle"
 
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
 [params]
   description = "Jonas Meyer-Ohle's personal website"
   keywords = "blog,developer,personal"
@@ -20,7 +26,7 @@ title = "Jonas Meyer-Ohle"
     company = "True North Partners"
     period = "Sep 2024 - Present"
     location = "Oxford, UK · Remote"
-    summary = "Consulting on quantitative development and financial modelling projects."
+    summary = "Working on data engineering and applications for credit risk monitoring."
 
   [[params.timeline]]
     role = "Model Risk Quantitative Developer"

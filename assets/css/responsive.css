@@ -165,12 +165,14 @@ h1 {
   text-decoration: none;
 }
 
-.profile-links button {
+.profile-links button,
+.article-content button {
   transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-.profile-links a:hover button {
+.profile-links a:hover button,
+.article-content a:hover button {
   transform: translateY(-2px);
 }
 
@@ -304,6 +306,8 @@ h1 {
 
 .page-frame > main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== NAVIGATION RESPONSIVE ===== */

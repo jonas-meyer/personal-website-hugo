@@ -1,5 +1,5 @@
 {{ $pages := where .Site.Pages "Section" "blog" }} {{ $pages = where $pages
-"Kind" "page" }} {{ $pages = $pages.ByDate.Reverse }} {{ if gt (len $pages) 0 }}
+"Kind" "page" }} {{ $pages = $pages.ByDate.Reverse }}
 <div
   class="home-card posts-card"
   box-="round"
@@ -15,6 +15,7 @@
     <span>blog</span>
   </div>
   <div class="posts-grid">
+    {{ if gt (len $pages) 0 }}
     {{ range $pages }}
     <div class="post-card-wrapper">
       <a
@@ -29,17 +30,19 @@
         class="post-card"
       >
         <div class="header">
+          <span>{{ .Title | lower }}</span>
           <span>{{ .Date.Format "2006-01-02" }}</span>
         </div>
         <div class="card-body">
-          <h3 style="color: var(--maroon); margin: 0 0 0.5rem 0">
-            {{ .Title }}
-          </h3>
           <article>{{ .Content | truncate 250 }}</article>
         </div>
       </div>
     </div>
     {{ end }}
+    {{ else }}
+    <div style="padding: 1rem; text-align: center; color: var(--foreground1);">
+      No posts yet.
+    </div>
+    {{ end }}
   </div>
 </div>
-{{ end }}

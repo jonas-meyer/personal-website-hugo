@@ -1,15 +1,24 @@
 {{ define "main" }}
-<article
-  box-="double round"
-  shear-="top"
-  style="--box-border-color: var(--foreground0)"
->
-  <div
-    class="header"
-    style="flex-direction: column; align-items: flex-start; gap: 0.25rem"
+<div style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; flex: 1;">
+  <article
+    box-="round"
+    shear-="top"
+    style="--box-border-color: var(--foreground0); --box-border-width: 2px; --box-double-border-width: 2px; background-color: var(--background0); flex: 1; display: flex; flex-direction: column;"
   >
-    <span>{{ .Title }}</span>
-  </div>
-  <div class="article-content">{{ .Content }}</div>
-</article>
+    <div class="header">
+      <span>{{ .Title | lower }}</span>
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+    </div>
+    <div class="article-content" style="padding: 1rem; flex: 1; display: flex; flex-direction: column;">
+      <div style="flex: 1;">
+        {{ .Content }}
+      </div>
+      <div style="margin-top: 2rem; display: flex; justify-content: flex-start;">
+        <a href="/" style="text-decoration: none;">
+          <button box-="round">← back</button>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
 {{ end }}
