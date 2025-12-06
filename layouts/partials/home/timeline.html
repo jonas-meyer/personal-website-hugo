@@ -18,7 +18,13 @@
             <span is-="badge" variant-="foreground1">{{ .period }}</span>
           </div>
           <div class="timeline-meta">
-            <span class="timeline-company">{{ .company }}</span>
+            <span class="timeline-company">
+              {{ if .url }}
+              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .company }}</a>
+              {{ else }}
+              {{ .company }}
+              {{ end }}
+            </span>
             {{ with .location }}<span is-="badge" variant-="background1"
               >{{ . }}</span
             >{{ end }}

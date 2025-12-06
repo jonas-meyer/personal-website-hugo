@@ -166,13 +166,15 @@ h1 {
 }
 
 .profile-links button,
-.article-content button {
+.article-content button,
+.tag-list-single button {
   transition: transform 0.2s ease;
   cursor: pointer;
 }
 
 .profile-links a:hover button,
-.article-content a:hover button {
+.article-content a:hover button,
+.tag-list-single a:hover button {
   transform: translateY(-2px);
 }
 
@@ -274,6 +276,17 @@ h1 {
 
 .timeline-company {
   font-weight: 500;
+}
+
+.timeline-company a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--foreground2);
+  transition: border-color 0.2s ease;
+}
+
+.timeline-company a:hover {
+  border-color: var(--foreground0);
 }
 
 .timeline-summary {
@@ -614,3 +627,42 @@ button:focus {
     justify-content: center;
   }
 }
+
+/* ===== GALLERY SHORTCODE ===== */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.gallery > * {
+  flex: 1;
+  min-width: 250px; /* Stacks on mobile */
+  margin: 0;
+  text-align: center;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== THEME IMAGE SHORTCODE ===== */
+.theme-img-dark { display: none; }
+.theme-img-light { display: block; }
+
+[data-webtui-theme="dark"] .theme-img-dark { display: block; }
+[data-webtui-theme="dark"] .theme-img-light { display: none; }
+
+/* ===== IMAGE CAPTIONS ===== */
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--foreground1);
+  margin: 0;
+}
+

@@ -33,6 +33,15 @@
           <span>{{ .Title | lower }}</span>
           <span>{{ .Date.Format "2006-01-02" }}</span>
         </div>
+        {{ if .Params.tags }}
+        <div style="padding: 0.5rem 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          {{ range .Params.tags }}
+          <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" style="text-decoration: none; z-index: 2; position: relative;">
+            <button size-="small" variant-="background1">#{{ . }}</button>
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
         <div class="card-body">
           <article>{{ .Content | truncate 250 }}</article>
         </div>

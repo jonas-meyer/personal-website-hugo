@@ -1,0 +1,21 @@
+{{ $src := .Get "src" }}
+{{ $darkSrc := replace $src "." "-dark." }}
+{{ $alt := .Get "alt" }}
+{{ $title := .Get "title" }}
+{{ $width := .Get "width" }}
+{{ $style := "" }}
+{{ if $width }}
+  {{ $style = printf "width: %s; margin: 0 auto;" $width }}
+{{ end }}
+
+<div box-="round" style="--box-border-color: var(--foreground2); display: flex; flex-direction: column; gap: 0.5rem; padding: 0.5rem; {{ $style | safeCSS }}">
+  <div class="theme-image-container" style="line-height: 0;">
+    <img src="{{ $src }}" alt="{{ $alt }}" class="theme-img-light" style="width: 100%; height: auto; border-radius: 2px;" />
+    <img src="{{ $darkSrc }}" alt="{{ $alt }}" class="theme-img-dark" style="width: 100%; height: auto; border-radius: 2px;" />
+  </div>
+  {{ if $title }}
+  <div box-="round" style="--box-border-color: var(--foreground2); background-color: var(--surface0); padding: 0.75rem 0.75rem;">
+    <p class="image-caption" style="margin: 0; line-height: 1.5;">{{ $title }}</p>
+  </div>
+  {{ end }}
+</div>
