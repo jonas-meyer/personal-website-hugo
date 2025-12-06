@@ -33,7 +33,7 @@ It is clear that a more realistic zoning system can be achieved. The below image
 
 {{< theme-image src="roads-goal.svg" alt="Description" title="Goal layout" width="33%">}}
 
-To make this improved vision come to life, I plan on using [Bevy](https://bevy.org). Itis a rust based open-source data-driven game engine which will let me implement a lot of the systems with relative ease while still learning about game programming and rust.
+To make this improved vision come to life, I plan on using [Bevy](https://bevy.org). It is a rust based open-source data-driven game engine which will let me implement a lot of the systems with relative ease while still learning about game programming and rust.
 
 The book Game Programming Patterns, by Robert Nystrom, will be another useful resource since it explains many performance-based concepts that are not applicable in my day-to-day job. Hopefully this combination will let me explore both a new programming language to me, and game programming!
 

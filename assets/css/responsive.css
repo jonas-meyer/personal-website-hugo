@@ -72,6 +72,7 @@ h1 {
   width: 100%;
   margin-inline: auto;
   padding-inline: 1rem;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -86,6 +87,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 3vw, 2rem);
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
 }
 
 .home-grid {
@@ -93,23 +97,31 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 3vw, 2rem);
   /* align-items: start; Removed to allow stretching */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .home-grid > * {
   height: auto; /* Allow flex to control height, but grid stretch will apply */
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .home-card {
   display: flex;
   flex-direction: column;
   gap: clamp(0.75rem, 2vw, 1.25rem);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .about-card,
 .posts-card {
   position: relative;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .profile-hero {
@@ -117,6 +129,13 @@ h1 {
   grid-template-columns: minmax(140px, 280px) 1fr;
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.profile-hero > * {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .profile-avatar picture,
@@ -143,16 +162,19 @@ h1 {
 
 .profile-body h1 {
   font-size: clamp(1.8rem, 3vw, 2.3rem);
+  word-break: break-word;
 }
 
 .profile-tagline {
   margin: 0.25rem 0 0.75rem 0;
   color: var(--foreground1);
   font-size: 1.05rem;
+  word-break: break-word;
 }
 
 .profile-bio {
   margin: 0 0 1rem 0;
+  word-break: break-word;
 }
 
 .profile-links {
@@ -185,12 +207,62 @@ h1 {
 
   .profile-hero {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .profile-avatar {
-    max-width: 260px;
+    max-width: 220px;
     width: 100%;
     margin-inline: auto;
+  }
+
+  .profile-body {
+    text-align: center;
+  }
+
+  .profile-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-hero {
+    gap: 0.75rem;
+  }
+
+  .profile-avatar {
+    max-width: 200px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .profile-body {
+    text-align: center;
+  }
+
+  .profile-body h1 {
+    font-size: 1.5rem;
+  }
+
+  .profile-tagline {
+    font-size: 0.95rem;
+  }
+
+  .profile-links {
+    justify-content: center;
+  }
+
+  .posts-grid {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .timeline-body {
+    padding: 0.5rem;
+  }
+
+  .timeline-tree li {
+    padding-left: 1.5rem;
   }
 }
 
@@ -198,6 +270,8 @@ h1 {
 
 .timeline-body {
   padding: 1rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .timeline-tree {
@@ -205,6 +279,7 @@ h1 {
   padding: 0;
   margin: 0;
   font-family: var(--font-family);
+  min-width: 0;
 }
 
 .timeline-tree li {
@@ -263,6 +338,7 @@ h1 {
   font-weight: bold;
   font-size: 1.1rem;
   color: var(--foreground0);
+  word-break: break-word;
 }
 
 .timeline-meta {
@@ -276,6 +352,7 @@ h1 {
 
 .timeline-company {
   font-weight: 500;
+  word-break: break-word;
 }
 
 .timeline-company a {
@@ -303,6 +380,8 @@ h1 {
   gap: clamp(1rem, 2vw, 1.5rem);
   padding: clamp(1rem, 2vw, 1.75rem);
   min-height: 100vh;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .page-frame > header,
@@ -445,15 +524,17 @@ h1 {
   max-height: 80vh;
   /* Cap height to prevent infinite growth */
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1rem;
   box-sizing: border-box;
   position: relative;
   min-height: 0;
+  min-width: 0;
   /* Important for nested flex scrolling */
 }
 
-/* Desktop: Make blog box match timeline height */
-@media (min-width: 769px) {
+/* Desktop: Make blog box match timeline height - only when grid is two columns */
+@media (min-width: 901px) {
   .home-grid > .posts-card {
     height: 0;
     min-height: 100%;
