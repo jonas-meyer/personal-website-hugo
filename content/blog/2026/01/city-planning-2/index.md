@@ -1,17 +1,17 @@
 ---
 title: "Developing a city-builder; Implementing a basic road system"
-date: 2026-01-05
+date: 2026-01-04
 draft: true
 tags: ["game-dev", "rust", "city-planning", "bevy"]
 ---
 
 ## Introduction
 
-In this update, we'll be building a simple road system using the different functionalities Bevy provides. As mentioned in the first blog of this series, [Bevy](https://bevy.org/) is a game engine which uses the Entity Component System to structure data and logic. Bevy supports everything that we need at the moment, including rendering, animations, UI and more!
+In the [previous post](/blog/2025/12/city-planning-1/), I outlined my frustrations with zoning in modern city builders and set a goal; create a more realistic system where plots naturally fill available space along curved roads. Before we can tackle zoning though, we need roads to zone around.
 
-We'll mainly be using the [RoadPlugin](https://github.com/jonas-meyer/planrs/blob/42cee71742525a0e025d23cf262ca4982beb9a33/src/road.rs), to explain each Bevy system, as it implements the actual logic to draw a polyline road on a window!
+This post covers the first step, implementing a basic polyline road tool. Along the way, we'll explore how Bevy structures game logic using the Entity Component System, covering plugins, components, resources, states, observers, and input handling. By the end, you'll be able to press R, clock to place road nodes, and hit Enter to build a road.
 
-The [part-1](https://github.com/jonas-meyer/planrs/tree/part-1) tag can be used to follow along for this blog update.
+We'll be working through the [RoadToolPlugin](https://github.com/jonas-meyer/planrs/blob/42cee71742525a0e025d23cf262ca4982beb9a33/src/road.rs) code. The [part-1](https://github.com/jonas-meyer/planrs/tree/part-1) tag can be used to follow along.
 
 ## App & Plugins
 
@@ -39,7 +39,7 @@ fn main() {
 
 The important concepts here, is the `App::new()` constructor, the `add_plugins(...)` method and the `run()` method.
 
-Every Bevy application starts by creating an `App` object which implements some core engine features such as the `MainSchedulePlugin` and some others depending on the features enabled. This gives us the core structure in which we can add our own game logic and resources.
+Every Bevy application starts by creating an `App` object which implements some core engine features such as the `MainSchedulePlugin` and others depending on the features enabled. This gives us the core structure in which we can add our own game logic and resources.
 
 To compartmentalise our different game systems, we use a concept called `Plugins`. These allow us to bundle data and logic into separate rust modules, keeping these concerns separate, reusable and easier to test in isolation. As an example, if we didn't use plugins in our project, the main function would look like below:
 
@@ -68,9 +68,9 @@ fn main() {
 }
 ```
 
-Imagine having to edit this instead of the clean version given at the top of this section?
+Imagine having to edit this instead of the clean version given at the top of this section.
 
-The `run()` method will then run the different systems using an event loop and depending on the general setup of the application, open a platform-dependent window and render whatever you have defined!
+The `run()` method will then run the different systems using an event loop and depending on the general setup of the application, open a platform-dependent window and render whatever you have defined.
 
 ## Components & Resources
 
@@ -88,10 +88,7 @@ pub struct Road;
 pub struct RoadNode;
 ```
 
-These are marker components and therefore contain no data, just identity. They let us:
-
-- Find all roads in the world: `Query<&Children, With<Road>>`
-- Identify which identities are road nodes: `Query<&Transform, With<RoadNode>>`
+These are marker components and therefore contain no data, just identity. They let us find all roads in the world (`Query<&Children, With<Road>>`) and identify which identities are road nodes (`Query<&Transform, With<RoadNode>>`).
 
 We can then spawn these components using the following syntax:
 
@@ -111,7 +108,7 @@ commands
     });
 ```
 
-Here we spawn each node as a child entity to the Road component with the actual node positions. This allows to do transformations on the whole road without having to select each node in the road individually (e.g deleting the parent road).
+Here we spawn each node as a child entity to the Road component with the actual node positions. This allowed us to do transformations on the whole road without having to select each node in the road individually (e.g deleting the parent road).
 
 Components can also hold data. For example, a road node could store additional properties in the future:
 
@@ -125,10 +122,7 @@ pub struct RoadNode {
 
 ### 2. Resources: Global Singleton Data
 
-Resources on the other hand are global unique, there's only one instance of each resource type in your application. Use resources when:
-
-- Only one instance should exist (cursor position, current score, settings)
-- Multiple systems need to read/write the same shared state
+Resources on the other hand are global unique, there's only one instance of each resource type in your application. Use resources when nly one instance should exist (cursor position, current score, settings) and/or multiple systems need to read/write the same shared state.
 
 In our road plugin:
 
@@ -139,7 +133,7 @@ pub struct CurrentRoad {
 }
 ```
 
-`CurrentRoad` is a resource because only one road can be edited at a time!
+`CurrentRoad` is a resource because only one road can be edited at a time.
 
 ## Systems & Schedules
 
@@ -168,7 +162,7 @@ fn draw_finalized_road(
 }
 ```
 
-This function is passed a mutable Gizmos object (we will explain this later), and two queries. A query is the idiomatic Bevy way of getting entities from the world. In this case, we query for all entities that have the `Road` marker and specifically get all the children of this component. The children query returns only the entity ids, so we also need to query for the actual node components as well using `Query<&Transform, With<RoadNode>>`. This returns a list of nodes with the location of them. Using this information we can then draw these on a window.
+This function is passed a mutable Gizmos object (we will explain this later), and two queries. A query is the idiomatic Bevy way of getting entities from the world. In this case, we query for all entities that have the `Road` marker and specifically get all the children of this component. The children query returns only the entity ids, so we also need to query for the actual node components as well using `Query<&Transform, With<RoadNode>>`. This returns a list of nodes with their location. Using this information we can then draw these on a window.
 
 Systems can be run on different schedules. For the `draw_finalized_road` system, we run this on an `Update` schedule as defined here:
 
@@ -185,7 +179,7 @@ impl Plugin for RoadToolPlugin {
 }
 ```
 
-The update schedule runs every frame and is the most used schedule. Other schedules are also available, such as `Startup` which only runs once at app start, `OnEnter` / `OnExit` for changes in State which we'll explain next! One can also create their own run conditions which are just functions which return a `bool`.
+The update schedule runs every frame and is the most used schedule. Other schedules are also available, such as `Startup` which only runs once at app start, or `OnEnter` / `OnExit` for changes in State which we'll explain next. One can also create their own run conditions which are just functions which return a `bool`.
 
 ## State
 
@@ -257,9 +251,9 @@ fn on_place_node(
 }
 ```
 
-The `RoadToolPlugin` must depend on the `AudioPlugin`, `UndoPlugin`, `AnalyticsPlugin`, `UiPlugin`. We can't add a new feature without having to modify `on_place_node` and we can't reuse the `RoadToolPlugin` without bringing all these dependencies! Further, we would need to mock all dependencies to do any kind of testing.
+The `RoadToolPlugin` must depend on the `AudioPlugin`, `UndoPlugin`, `AnalyticsPlugin`, `UiPlugin`. We can't add a new feature without having to modify `on_place_node` and we can't reuse the `RoadToolPlugin` without bringing all these dependencies. Further, we would need to mock all dependencies to do any kind of testing.
 
-With observers, all the road tool needs to do is announce what happened!
+With observers, all the road tool needs to do is announce what happened.
 
 ```rust
 #[derive(Event)]
@@ -302,15 +296,13 @@ impl Plugin for AudioPlugin {
 }
 ```
 
-Something to keep in mind is that observers run in an undefined order, so if ordering is important, use something like chain events, or have multiple actions in a single observer!
+Something to keep in mind is that observers run in an undefined order, so if ordering is important, use something like chain events, or have multiple actions in a single observer.
 
 ## Input with `bevy_enhanced_input`
 
 Bevy's built-in input handling couples your game logic directly to specific keys or buttons. If you want to jump with `Space`, your jump system checks for `KeyCode::Space`. This becomes problematic when you want to support multiple input methods (keyboard, gamepad, touch), allow rebindable controls or change bindings without recompiling.
 
-The `bevy_enhanced_input` crate solves this by separating actions from bindings. An action is what the player wants to do (e.g., `PlaceNode`, `ToggleBuild`), while a binding is how they do it (e.g., left mouse button, gamepad A button). Your game logic only cares about actions, it observers `On<Start<PlaceNode>>` and doesn't know or care whether that came from a mouse click or a touchscreen tap.
-
-Bindings are defined separately and can even be loaded from a configuration file at runtime (we'll get to this), enabling user-customizable controls without touching your game code.
+The `bevy_enhanced_input` crate solves this by separating actions from bindings. An action is what the player wants to do (e.g., `PlaceNode`, `ToggleBuild`), while a binding is how they do it (e.g., left mouse button, gamepad A button). Your game logic only cares about actions, it observers `On<Start<PlaceNode>>` and doesn't know or care whether that came from a mouse click or a touchscreen tap. Bindings on the other hand, are defined separately and can even be loaded from a configuration file at runtime (we'll get to this), enabling user-customizable controls without touching your game code.
 
 Below are some examples used in the `RoadToolPlugin`:
 
@@ -324,7 +316,7 @@ struct PlaceNode;
 struct ToggleBuild;
 ```
 
-First we define some actions which can have different output (bool, f32, Vec2) depending on button, single and multi axis actions.
+First, we define some actions which can have different output (bool, f32, Vec2) depending on button, single and multi axis actions.
 
 ```rust
 // Define HOW actions are triggered (configuration, not logic)
@@ -334,7 +326,7 @@ let bindings = actions!(RoadBuilder[
 ]);
 ```
 
-Then we define bindings for those actions, these bindings can be changed at runtime and can come from various sources.
+Then, we define bindings for those actions. These bindings can be changed at runtime and can come from various sources.
 
 ```rust
 // Game logic only knows about actions, not bindings
@@ -347,11 +339,11 @@ fn on_place_node(
 }
 ```
 
-Then we use the event that the action triggers, since the crate uses the observer event pattern! For the above example, we run the system whenever the start of a `PlaceNode` occurs, and push the current cursor position to the current_road node vector structure.
+Finally, we use the event that the action triggers, since the crate uses the observer event pattern. For the above example, we run the system whenever the start of a `PlaceNode` occurs, and push the current cursor position to the current_road node vector structure.
 
 ## Configuration with RON
 
-In order to allow for loading configuration such as input keys we use a data serialization format called RON which stands for `Rusty Object Notation`. It looks similar to rust notation and supports all of Serde's data model. Have a look at the following:
+In order to allow for loading configuration, such as input keys, we use a data serialization format called RON, which stands for `Rusty Object Notation`. It looks similar to rust notation and supports all of Serde's data model. Have a look at the following:
 
 ```rust
 (
@@ -385,7 +377,7 @@ struct RoadInputConfig {
 }
 ```
 
-As you can see, it's pretty flexible and self describing! No need to implement specific serializing + deserializing logic for fields, it's all taken care of by RON.
+As you can see, it's pretty flexible and self describing. No need to implement specific serializing + deserializing logic for fields, it's all taken care of by RON.
 
 ## Rendering with Gizmos
 
@@ -401,7 +393,7 @@ for &node in &nodes {
 }
 ```
 
-In the future, we'll be using actual meshes and rendering which will allow for more intricate graphics and better performance as we won't need to re-render each frame!
+In the future, we'll be using actual meshes and rendering which will allow for more intricate graphics and better performance as we won't need to re-render each frame.
 
 ## Putting it all together
 
@@ -458,4 +450,4 @@ With these building blocks, we have a functional polyline road tool: press R to 
 
 ## Next Steps
 
-For our next steps, we want to continue building out the road tool, by allowing to edit existing roads, implementing simple mesh rendering and gating specific systems behind `bevy_enhanced_input` Contexts! With some luck we might even implement some curved roads.
+For our next steps, we want to continue building out the road tool, by allowing to edit existing roads, implementing simple mesh rendering and gating specific systems behind `bevy_enhanced_input` Contexts. With some luck we might even implement some curved roads!
