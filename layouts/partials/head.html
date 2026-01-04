@@ -23,6 +23,31 @@
       --box-border-width: 1px;
       --box-double-border-width: 2px;
       --copy-btn-size: clamp(24px, 1.35rem + 0.2vw, 28px);
+
+      /* Subtle grayscale syntax highlighting (light theme) */
+      /* Uses weight/style variations + subtle shade differences */
+      --syn-keyword: #1a1a1a;
+      --syn-string: #4a4a4a;
+      --syn-comment: #909090;
+      --syn-function: #2d2d2d;
+      --syn-number: #3d3d3d;
+      --syn-type: #505050;
+      --syn-property: #383838;
+      --syn-builtin: #454545;
+      --syn-punctuation: #5a5a5a;
+    }
+
+    [data-webtui-theme="dark"] {
+      /* Subtle grayscale syntax highlighting (dark theme) */
+      --syn-keyword: #f0f0f0;
+      --syn-string: #c8c8c8;
+      --syn-comment: #686868;
+      --syn-function: #e0e0e0;
+      --syn-number: #d5d5d5;
+      --syn-type: #b8b8b8;
+      --syn-property: #d0d0d0;
+      --syn-builtin: #c0c0c0;
+      --syn-punctuation: #a0a0a0;
     }
 
     .header {
@@ -201,8 +226,8 @@
       margin: 0;
       padding: 1rem;
       padding-right: calc(1rem + var(--copy-btn-size) + 0.5rem);
-      background-color: var(--base);
-      color: var(--text);
+      background-color: var(--background1);
+      color: var(--foreground0);
       overflow-x: auto;
       white-space: pre;
       font-family: var(--font-family);
@@ -210,9 +235,18 @@
       max-width: 100%;
     }
 
-    code {
-      color: var(--text);
+    /* Code inside pre blocks - let the pre handle background */
+    pre code {
+      color: var(--foreground0);
       background-color: transparent;
+    }
+
+    /* Inline code - visible background with padding */
+    :not(pre) > code {
+      background-color: var(--background1);
+      padding: 0.2em 0.5ch;
+      border-radius: 3px;
+      font-size: 0.9em;
     }
 
     /* Copy button styling */
@@ -223,25 +257,25 @@
       width: var(--copy-btn-size);
       height: var(--copy-btn-size);
       padding: 0;
-      background: var(--surface0);
-      border: 1px solid var(--overlay0);
+      background: var(--background2);
+      border: 1px solid var(--foreground2);
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: var(--text);
+      color: var(--foreground0);
       transition: background 0.1s;
       z-index: 10;
     }
 
     .copy-btn:hover {
-      background: var(--surface1);
-      border-color: var(--overlay1);
+      background: var(--background3);
+      border-color: var(--foreground1);
     }
 
     .copy-btn:active {
-      background: var(--surface2);
+      background: var(--foreground2);
     }
 
     .copy-btn svg {
@@ -256,63 +290,68 @@
       min-height: var(--copy-btn-size) !important;
     }
 
-    /* Syntax highlighting with Catppuccin colors for all languages */
+    /* Syntax highlighting - grayscale with weight/style differentiation */
     .token.keyword,
     .token.operator,
     .token.boolean {
-      color: var(--mauve);
+      color: var(--syn-keyword);
+      font-weight: 700;
     }
 
     .token.string,
     .token.char {
-      color: var(--green);
+      color: var(--syn-string);
     }
 
     .token.comment,
     .token.prolog,
     .token.doctype,
     .token.cdata {
-      color: var(--overlay0);
+      color: var(--syn-comment);
+      font-style: italic;
     }
 
     .token.function,
     .token.function-name,
     .token.method {
-      color: var(--blue);
+      color: var(--syn-function);
+      font-weight: 600;
     }
 
     .token.number,
     .token.constant {
-      color: var(--peach);
+      color: var(--syn-number);
     }
 
     .token.property,
     .token.tag,
     .token.symbol,
     .token.deleted {
-      color: var(--red);
+      color: var(--syn-property);
     }
 
     .token.selector,
     .token.attr-name,
     .token.builtin,
     .token.inserted {
-      color: var(--yellow);
+      color: var(--syn-builtin);
+      font-weight: 600;
     }
 
     .token.punctuation,
     .token.bracket {
-      color: var(--text);
+      color: var(--syn-punctuation);
     }
 
     .token.class-name,
     .token.namespace {
-      color: var(--sky);
+      color: var(--syn-type);
+      font-weight: 600;
     }
 
     .token.variable,
     .token.regex {
-      color: var(--pink);
+      color: var(--syn-keyword);
     }
 
     /* Post card overlay for fixing nested link issues */
@@ -448,11 +487,12 @@
       });
     })();
   </script>
+  <!-- Disable Prism auto-highlight, we'll trigger it after DOM is ready -->
+  <script>window.Prism = window.Prism || {}; Prism.manual = true;</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
@@ -461,6 +501,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function() { Prism.highlightAll(); });</script>
 
   <!-- Mobile navigation -->
   <script>
