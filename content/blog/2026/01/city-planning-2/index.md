@@ -1,6 +1,6 @@
 ---
 title: "Developing a city-builder; Implementing a basic road system"
-date: 2025-01-05
+date: 2026-01-05
 draft: true
 tags: ["game-dev", "rust", "city-planning", "bevy"]
 ---
